@@ -1,0 +1,46 @@
+\documentclass{article}
+\usepackage{amsmath, amssymb}
+
+\begin{document}
+
+\section*{Formal Definition}
+
+The survival probability (prediction window) is given by:
+\[
+P_C = \sigma\big( \alpha p + \beta S - \gamma D + \eta R_{\text{net}} + \delta u \big),
+\]
+with survival/prediction iff
+\[
+P_C \geq P^*.
+\]
+
+Where:
+- $r =$ restraint  
+- $a =$ alignment  
+- $p =$ persistence  
+- $\theta =$ stress  
+- $u =$ uncertainty  
+
+The predicted arrival time of light from $A$ to $C$ along path $\Gamma$ is:
+\[
+t_{AC}(\varepsilon, \kappa) = \int_{\Gamma} \frac{ds}{c \,\big(1 - \kappa \cdot n(s)\big)} + \text{GR} + \text{(kinematic terms)}.
+\]
+
+Variance of prediction error shrinks as:
+\[
+\alpha p + \beta S - \gamma D + \eta R_{\text{net}} + \delta u \quad \text{grows.}
+\]
+
+\section*{Operational Rule (First Signal Synchronization)}
+
+1. Source restrains (emission discipline).  
+2. Choir aligns (two-way clock sync across network).  
+3. Pick the gauge $(\varepsilon, \kappa)$ that maximizes $P_C$.  
+4. Set release rate $m^*$ so that $R \geq 1$ under observed noise.  
+5. Predict arrivals: report
+\[
+t_{AC} \pm z_q \, \sqrt{\mathrm{Var}[\Delta t]}.
+\]
+6. Adapt release as stress $\theta$ changes.  
+
+\end{document}
