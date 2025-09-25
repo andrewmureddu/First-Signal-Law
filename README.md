@@ -36,4 +36,5 @@ The law itself is open and free for all to use.
 When referencing this work, please cite as:
 
 > Mureddu, A. (2025). *First Signal Law.* GitHub repository.  
-> DOI: [Zenodo DOI will appear here after release]
+> DOI: https://doi.org/10.5281/zenodo.17168101
+> 
