@@ -56,6 +56,20 @@ band's lower edge — the quantity flagged as least defended.
 - wide-margin tests are practical; the Red Queen clustering prediction needs
   coverage ~1.00
 
+### [`mu_protocol.md`](mu_protocol.md)
+How to measure $\mu$ and $\theta_{\text{top}}$, which set the band's upper edge.
+
+- **corrects a prediction made in `gamma_protocol.md`**: $\mu$ is *harder* than
+  $\gamma$, not easier
+- a throughput regression measures **demand, not capacity** — bias +0.20 with a CI
+  width of 0.000, a confidently wrong answer that no diagnostic catches
+- capacity lives in the **delay-load** relationship and is only visible near
+  saturation; below ~50% peak utilisation the estimator refuses
+- $\delta = R\,\theta_{\text{top}}$ exactly, so the failed throughput regression
+  yields $\theta_{\text{top}}$ for free — one dataset gives the whole ceiling
+- structural consequence: a system far from its ceiling **cannot locate it**, so the
+  early-warning signal is the trend in utilisation, not $\mu$
+
 ### [`prior_art.md`](prior_art.md)
 $R$ is an **elasticity**, already formalised in at least six literatures:
 economics (returns to scale), collapse studies (Tainter), cybernetics (Ashby, Van
@@ -77,6 +91,7 @@ measurements create for $R \ge 1$.
 | [`scripts/band_bounds.py`](scripts/band_bounds.py) | `viability_band.md` §1, 2, 3, 5 |
 | [`scripts/cadence_blindness.py`](scripts/cadence_blindness.py) | `viability_band.md` §4b |
 | [`scripts/gamma_estimator.py`](scripts/gamma_estimator.py) | `gamma_protocol.md` §2–5 |
+| [`scripts/mu_estimator.py`](scripts/mu_estimator.py) | `mu_protocol.md` §2, 4, 5, 6 |
 
 ```sh
 for s in analysis/scripts/*.py; do echo "== $s"; python3 "$s"; done
@@ -86,11 +101,17 @@ for s in analysis/scripts/*.py; do echo "== $s"; python3 "$s"; done
 
 ## Open items
 
-$\gamma$ now has a measurement protocol ([`gamma_protocol.md`](gamma_protocol.md)).
-Still unmeasured: $\mu$ (mediator capacity exponent) and $\theta_{\text{top}}$
-(mediation topology), which together set the band's upper edge. $\mu$ should be more
-tractable than $\gamma$ — mediator throughput is usually observable by design rather
-than by rare-event sampling.
+All three band parameters now have protocols: $\gamma$ in
+[`gamma_protocol.md`](gamma_protocol.md), $\mu$ and $\theta_{\text{top}}$ in
+[`mu_protocol.md`](mu_protocol.md). None has been applied to real data — the
+protocols are validated against simulated ground truth, which establishes the
+estimators, not any empirical value.
+
+The band's two edges turn out to have opposite observability. $\gamma$ is limited by
+rare events but degrades honestly into a wide interval. $\mu$ is limited by whether
+the mediator can be stressed at all, and its naive estimator fails *silently* — a
+tight confidence interval around the wrong quantity. A system far from its
+dissolution ceiling cannot measure where it is.
 
 Blocking issue for the original criterion: **the definition and units of $C$**.
 Until those are fixed, $\hat R$ can be moved across the threshold by choosing

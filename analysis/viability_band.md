@@ -364,8 +364,11 @@ obligation:
    [`gamma_protocol.md`](gamma_protocol.md). Estimate with Chao1 against a
    disturbance inventory, report Turing-Good coverage, and note that the naive
    distinct-type count is off by up to +0.21 at low coverage.
-2. **$\mu$** — from mediator throughput.
-3. **$\theta_{\text{top}}$** — from mediation topology.
+2. **$\mu$** — **delivered**: see [`mu_protocol.md`](mu_protocol.md). *Not* from
+   throughput, which measures demand rather than capacity; from the delay-load
+   relationship, and only where the mediator reaches ~90% utilisation.
+3. **$\theta_{\text{top}}$** — **delivered**: $\theta_{\text{top}} = \delta/R$,
+   where $\delta$ is the demand exponent from a throughput-versus-scale regression.
 
 Prior art for all of the above is mapped in [`prior_art.md`](prior_art.md).
 
