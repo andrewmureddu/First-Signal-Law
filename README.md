@@ -11,6 +11,7 @@ This repository preserves the law itself as public knowledge. It contains scaffo
 - [Distilled Axioms](axioms.md)  
 - [Formal Law Statement](law.md)  
 - [References](references.md)  
+- [Analysis](analysis/) — empirical review, prior-art mapping, and the viability-band reformulation  
 - [Appendix](appendix/) — extended notes, derivations, and metaphors  
 - [Figures](figures/) — conceptual diagrams  
 
