@@ -41,6 +41,21 @@ $$\gamma \le R \le \min(\mu/\theta_{\text{top}},\, 1), \qquad C < C_{\text{coll}
 - AX20 turns out to *be* the ceiling; AX21 is the only detector for stalemate
 - $R$ is provably blind to stalemate — four failure modes, not one
 
+### [`gamma_protocol.md`](gamma_protocol.md)
+How to actually measure $\gamma$, the environmental variety exponent that sets the
+band's lower edge — the quantity flagged as least defended.
+
+- the confound is **sample coverage**, not observation-effort scaling as first
+  suspected; effort scaling only sets the *sign* of the bias
+- **Chao1** is near-unbiased throughout (within 0.03) where the naive distinct-type
+  count is off by up to +0.21; what degrades is precision, not accuracy
+- rarefaction is *worse than the disease* (drove $\hat\gamma$ to 0.063), and Hill
+  numbers at $q{=}1,2$ are not robust substitutes
+- acceptance criterion tied to Turing-Good coverage, with the data quality each
+  margin requires
+- wide-margin tests are practical; the Red Queen clustering prediction needs
+  coverage ~1.00
+
 ### [`prior_art.md`](prior_art.md)
 $R$ is an **elasticity**, already formalised in at least six literatures:
 economics (returns to scale), collapse studies (Tainter), cybernetics (Ashby, Van
@@ -61,6 +76,7 @@ measurements create for $R \ge 1$.
 | [`scripts/check_grid_plane.py`](scripts/check_grid_plane.py) | `empirical_review.md` §4b |
 | [`scripts/band_bounds.py`](scripts/band_bounds.py) | `viability_band.md` §1, 2, 3, 5 |
 | [`scripts/cadence_blindness.py`](scripts/cadence_blindness.py) | `viability_band.md` §4b |
+| [`scripts/gamma_estimator.py`](scripts/gamma_estimator.py) | `gamma_protocol.md` §2–5 |
 
 ```sh
 for s in analysis/scripts/*.py; do echo "== $s"; python3 "$s"; done
@@ -70,10 +86,11 @@ for s in analysis/scripts/*.py; do echo "== $s"; python3 "$s"; done
 
 ## Open items
 
-The framework's edges are **unmeasured**. Nothing in this repository estimates
-$\gamma$ (environmental variety exponent), $\mu$ (mediator capacity exponent), or
-$\theta_{\text{top}}$ (mediation topology). The deliverable is three estimators,
-not a universal constant — and $\gamma$ is the least defended of the three.
+$\gamma$ now has a measurement protocol ([`gamma_protocol.md`](gamma_protocol.md)).
+Still unmeasured: $\mu$ (mediator capacity exponent) and $\theta_{\text{top}}$
+(mediation topology), which together set the band's upper edge. $\mu$ should be more
+tractable than $\gamma$ — mediator throughput is usually observable by design rather
+than by rare-event sampling.
 
 Blocking issue for the original criterion: **the definition and units of $C$**.
 Until those are fixed, $\hat R$ can be moved across the threshold by choosing

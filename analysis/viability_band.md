@@ -360,8 +360,10 @@ obligation:
 
 **Ship three estimators, not a universal constant.**
 
-1. **$\gamma$** — from environmental variety scaling. The least defended number in
-   the structure, and the natural next target.
+1. **$\gamma$** — from environmental variety scaling. **Delivered**: see
+   [`gamma_protocol.md`](gamma_protocol.md). Estimate with Chao1 against a
+   disturbance inventory, report Turing-Good coverage, and note that the naive
+   distinct-type count is off by up to +0.21 at low coverage.
 2. **$\mu$** — from mediator throughput.
 3. **$\theta_{\text{top}}$** — from mediation topology.
 
